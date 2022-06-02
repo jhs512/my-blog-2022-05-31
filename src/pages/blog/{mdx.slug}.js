@@ -2,7 +2,10 @@ import React from "react";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import Layout from "../../components/layout";
+import Layout from "../../components/Layout";
+import CodeBlock from "../../components/CodeBlock";
+import { MDXProvider } from "@mdx-js/react";
+
 const BlogPost = ({ data }) => {
   /*
   console.log(
@@ -36,8 +39,13 @@ const BlogPost = ({ data }) => {
       )}
 
       <hr />
-
-      <MDXRenderer>{data.mdx.body}</MDXRenderer>
+      <MDXProvider
+        components={{
+          pre: CodeBlock,
+        }}
+      >
+        <MDXRenderer>{data.mdx.body}</MDXRenderer>
+      </MDXProvider>
     </Layout>
   );
 };
