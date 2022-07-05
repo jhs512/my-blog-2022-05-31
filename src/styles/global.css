@@ -10,3 +10,7 @@ html > body {
   font-family: "GmarketSansMedium";
   text-underline-position: under;
 }
+
+body {
+  margin: 0;
+}
